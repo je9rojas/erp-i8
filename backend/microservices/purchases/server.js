@@ -1,5 +1,3 @@
-// backend/microservices/purchases/server.js
-
 // Importing required modules
 const express = require('express');
 const mongoose = require('mongoose');
@@ -16,6 +14,15 @@ const PORT = 3001;
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
+
+// CORS middleware configuration
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:3000', // Allowed origin, adjust as needed
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+};
+app.use(cors(corsOptions)); // Apply CORS options globally
 
 // Route handler for purchases
 app.use('/purchases', (req, res, next) => {

@@ -1,7 +1,5 @@
-// frontend/components/PurchaseForm.js
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importación de Bootstrap
-import PurchaseFormView from './PurchaseFormView'; // Vista importada
+import PurchaseFormView from './PurchaseFormView'; // Importamos el componente de vista
 
 export default function PurchaseForm() {
   const [formData, setFormData] = useState({
@@ -57,7 +55,7 @@ export default function PurchaseForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Datos enviados:', formData);
+    console.log('Datos enviados:', formData); // Console log para ver los datos antes de enviarlos
     try {
       const response = await fetch('http://localhost:3001/purchases', {
         method: 'POST',

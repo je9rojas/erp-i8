@@ -1,4 +1,3 @@
-// frontend/components/PurchaseFormView.js
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importación de Bootstrap
 
@@ -67,6 +66,22 @@ export default function PurchaseFormView({
                 id="address"
                 value={formData.address}
                 onChange={(e) => handleChange('address', e.target.value)}
+              />
+              <label htmlFor="currencyId" className="form-label mt-3">ID de Moneda</label>
+              <input
+                type="text"
+                className="form-control"
+                id="currencyId"
+                value={formData.currencyId}
+                onChange={(e) => handleChange('currencyId', e.target.value)}
+              />
+              <label htmlFor="paymentMethod" className="form-label mt-3">Método de Pago</label>
+              <input
+                type="text"
+                className="form-control"
+                id="paymentMethod"
+                value={formData.paymentMethod}
+                onChange={(e) => handleChange('paymentMethod', e.target.value)}
               />
             </div>
 
