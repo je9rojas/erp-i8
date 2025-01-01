@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // Schema for the details of purchase items
 const purchaseDetailSchema = new mongoose.Schema({
   quantity: { type: Number, required: true }, // Quantity of the product
-  code: { type: String, required: true },    // Product code
+  code: { type: String, required: true }, // Product code
   description: { type: String, required: true }, // Product description
   unitPrice: { type: Number, required: true }, // Unit price of the product
 });
@@ -16,14 +16,18 @@ const purchaseSchema = new mongoose.Schema({
   paymentMethod: { type: String, required: true }, // Payment method
   currencyId: { type: mongoose.Types.ObjectId, required: true, ref: 'Currency' }, // Currency ID
   issueDate: { type: Date, required: true }, // Date of issuance
+  businessName: { type: String, required: true }, // Business name
+  address: { type: String, required: true }, // Business address
   detail: { type: [purchaseDetailSchema], required: true }, // Details of the purchase items
   beforeTax: { type: Number, required: true }, // Total amount before tax
   IGV: { type: Number, required: true }, // Tax (IGV)
   creationDate: { type: Date, default: Date.now }, // Date of record creation
 });
 
+// Create and export the Purchase model
 const Purchase = mongoose.model('Purchase', purchaseSchema);
 
-console.log('Purchase model updated and loaded successfully');
+// Debugging log
+console.log('Purchase model updated and loaded successfully with businessName and address');
 
 module.exports = Purchase;

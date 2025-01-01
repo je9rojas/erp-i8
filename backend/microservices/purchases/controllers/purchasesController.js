@@ -11,6 +11,8 @@ exports.createPurchase = async (req, res) => {
       paymentMethod,
       currencyId,
       issueDate,
+      businessName, // New field: Business Name
+      address, // New field: Address
       detail,
       beforeTax,
       IGV,
@@ -23,6 +25,8 @@ exports.createPurchase = async (req, res) => {
       !paymentMethod ||
       !currencyId ||
       !issueDate ||
+      !businessName || // Validate new field
+      !address || // Validate new field
       !detail ||
       !beforeTax ||
       !IGV
@@ -31,6 +35,20 @@ exports.createPurchase = async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
+    // Logging received data for debugging
+    console.log('Received data for new purchase:', {
+      supplierId,
+      invoiceNumber,
+      paymentMethod,
+      currencyId,
+      issueDate,
+      businessName,
+      address,
+      detail,
+      beforeTax,
+      IGV,
+    });
+
     // Creating a new purchase document
     const newPurchase = new Purchase({
       supplierId,
@@ -38,6 +56,8 @@ exports.createPurchase = async (req, res) => {
       paymentMethod,
       currencyId,
       issueDate,
+      businessName, // Include new field
+      address, // Include new field
       detail,
       beforeTax,
       IGV,
