@@ -11,10 +11,10 @@ const purchaseDetailSchema = new mongoose.Schema({
 
 // Main schema for purchases
 const purchaseSchema = new mongoose.Schema({
-  supplierId: { type: mongoose.Types.ObjectId, required: true, ref: 'Supplier' }, // Supplier ID
+  supplierId: { type: mongoose.Types.ObjectId, required: false, ref: 'Supplier' }, // Supplier ID
   invoiceNumber: { type: String, required: true }, // Invoice number
   paymentMethod: { type: String, required: true }, // Payment method
-  currencyId: { type: mongoose.Types.ObjectId, required: true, ref: 'Currency' }, // Currency ID
+  currencyId: { type: mongoose.Types.ObjectId, required: false, ref: 'Currency' }, // Currency ID
   issueDate: { type: Date, required: true }, // Date of issuance
   businessName: { type: String, required: true }, // Business name
   address: { type: String, required: true }, // Business address
